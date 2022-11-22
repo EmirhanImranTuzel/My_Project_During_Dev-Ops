@@ -27,7 +27,7 @@ resource "aws_instance" "docker-server" {
               chmod +x /usr/local/bin/docker-compose
               yum install git -y
               hostnamectl set-hostname "docker-compose-server"
-              TOKEN="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"
+              TOKEN="---------------------------------------"
               FOLDER="https://$TOKEN@raw.githubusercontent.com/EmirhanImranTuzel/My_Project_During_Dev-Ops/main/Bookstore_Api"
               curl -s --create-dirs -o "/home/ec2-user/bookstore-api.py" -L "$FOLDER"/bookstore-api.py
               curl -s --create-dirs -o "/home/ec2-user/Dockerfile" -L "$FOLDER"/Dockerfile
