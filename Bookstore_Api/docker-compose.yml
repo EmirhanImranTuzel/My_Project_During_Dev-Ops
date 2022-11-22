@@ -9,7 +9,7 @@ services:
             MYSQL_USER: emrhntzl
             MYSQL_PASSWORD: Emrhntzl_34
         networks:
-            - Bookstore.network
+            - bookstore-api
     myapp:
         build: .
         restart: always
@@ -18,8 +18,8 @@ services:
         ports:
             - "80:80"
         networks:
-            - Bookstore.network
+            - bookstore-api
 
 networks:
-    Bookstore.network:
+    bookstore-api:
         driver: bridge
