@@ -1,0 +1,386 @@
+[0m[1mdata.aws_vpc.default_vpc: Reading...[0m[0m
+[0m[1mdata.aws_ami.amazon-linux-2: Reading...[0m[0m
+[0m[1mdata.aws_ami.amazon-linux-2: Read complete after 1s [id=ami-0b0dcb5067f052a63][0m
+[0m[1mdata.aws_vpc.default_vpc: Read complete after 1s [id=vpc-07b11494e6bee5c56][0m
+[0m[1mdata.aws_subnets.default_subnet: Reading...[0m[0m
+[0m[1mdata.aws_subnets.default_subnet: Read complete after 0s [id=us-east-1][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # aws_autoscaling_group.Phonebook_ASG[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_autoscaling_group" "Phonebook_ASG" {
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zones[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mdefault_cooldown[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdesired_capacity[0m[0m          = 2
+      [32m+[0m [0m[1m[0mforce_delete[0m[0m              = false
+      [32m+[0m [0m[1m[0mforce_delete_warm_pool[0m[0m    = false
+      [32m+[0m [0m[1m[0mhealth_check_grace_period[0m[0m = 300
+      [32m+[0m [0m[1m[0mhealth_check_type[0m[0m         = "ELB"
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mmax_size[0m[0m                  = 3
+      [32m+[0m [0m[1m[0mmetrics_granularity[0m[0m       = "1Minute"
+      [32m+[0m [0m[1m[0mmin_size[0m[0m                  = 1
+      [32m+[0m [0m[1m[0mname[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mprotect_from_scale_in[0m[0m     = false
+      [32m+[0m [0m[1m[0mservice_linked_role_arn[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mtarget_group_arns[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_zone_identifier[0m[0m       = [
+          [32m+[0m [0m"subnet-01efa985ae39438f9",
+          [32m+[0m [0m"subnet-05977f8199cc8c0a0",
+          [32m+[0m [0m"subnet-05a8ae1c0e080273d",
+          [32m+[0m [0m"subnet-068e1c6a95bcf03c6",
+          [32m+[0m [0m"subnet-0b81cb4f59c5370c6",
+          [32m+[0m [0m"subnet-0d565b995673260f3",
+        ]
+      [32m+[0m [0m[1m[0mwait_for_capacity_timeout[0m[0m = "10m"
+
+      [32m+[0m [0mlaunch_template {
+          [32m+[0m [0m[1m[0mid[0m[0m      = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m    = (known after apply)
+          [32m+[0m [0m[1m[0mversion[0m[0m = "$Latest"
+        }
+    }
+
+[1m  # aws_db_instance.phonebook[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_db_instance" "phonebook" {
+      [32m+[0m [0m[1m[0maddress[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mallocated_storage[0m[0m                     = 20
+      [32m+[0m [0m[1m[0mapply_immediately[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0marn[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0mauto_minor_version_upgrade[0m[0m            = true
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mbackup_retention_period[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mbackup_window[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mca_cert_identifier[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcharacter_set_name[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcopy_tags_to_snapshot[0m[0m                 = false
+      [32m+[0m [0m[1m[0mdb_name[0m[0m                               = "phonebook"
+      [32m+[0m [0m[1m[0mdb_subnet_group_name[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdelete_automated_backups[0m[0m              = true
+      [32m+[0m [0m[1m[0mendpoint[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mengine[0m[0m                                = "mysql"
+      [32m+[0m [0m[1m[0mengine_version[0m[0m                        = "8.0.28"
+      [32m+[0m [0m[1m[0mengine_version_actual[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                    = (known after apply)
+      [32m+[0m [0m[1m[0midentifier[0m[0m                            = "phonebook-app-db"
+      [32m+[0m [0m[1m[0midentifier_prefix[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0minstance_class[0m[0m                        = "db.t2.micro"
+      [32m+[0m [0m[1m[0mkms_key_id[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mlatest_restorable_time[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mlicense_model[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mmaintenance_window[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mmonitoring_interval[0m[0m                   = 0
+      [32m+[0m [0m[1m[0mmonitoring_role_arn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mmulti_az[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mnchar_character_set_name[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_type[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0moption_group_name[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mparameter_group_name[0m[0m                  = "default.mysql8.0"
+      [32m+[0m [0m[1m[0mpassword[0m[0m                              = (sensitive value)
+      [32m+[0m [0m[1m[0mperformance_insights_enabled[0m[0m          = false
+      [32m+[0m [0m[1m[0mperformance_insights_kms_key_id[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_retention_period[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m                                  = 3306
+      [32m+[0m [0m[1m[0mpublicly_accessible[0m[0m                   = false
+      [32m+[0m [0m[1m[0mreplica_mode[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mreplicas[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mresource_id[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mskip_final_snapshot[0m[0m                   = true
+      [32m+[0m [0m[1m[0msnapshot_identifier[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0mstorage_type[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mtimezone[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0musername[0m[0m                              = "admin"
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m                = (known after apply)
+    }
+
+[1m  # aws_launch_template.Phonebook_LT[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_launch_template" "Phonebook_LT" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdefault_version[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mimage_id[0m[0m               = "ami-0b0dcb5067f052a63"
+      [32m+[0m [0m[1m[0minstance_type[0m[0m          = "t2.micro"
+      [32m+[0m [0m[1m[0mkey_name[0m[0m               = "Emirhan"
+      [32m+[0m [0m[1m[0mlatest_version[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "Phonebook_App_LT"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0muser_data[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m = (known after apply)
+
+      [32m+[0m [0mmetadata_options {
+          [32m+[0m [0m[1m[0mhttp_endpoint[0m[0m               = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_protocol_ipv6[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_put_response_hop_limit[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_tokens[0m[0m                 = (known after apply)
+          [32m+[0m [0m[1m[0minstance_metadata_tags[0m[0m      = (known after apply)
+        }
+
+      [32m+[0m [0mtag_specifications {
+          [32m+[0m [0m[1m[0mresource_type[0m[0m = "instance"
+          [32m+[0m [0m[1m[0mtags[0m[0m          = {
+              [32m+[0m [0m"Name" = "Web Server of Phonebook App"
+            }
+        }
+    }
+
+[1m  # aws_lb.Phonebook_ALB[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb" "Phonebook_ALB" {
+      [32m+[0m [0m[1m[0marn[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdesync_mitigation_mode[0m[0m     = "defensive"
+      [32m+[0m [0m[1m[0mdns_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mdrop_invalid_header_fields[0m[0m = false
+      [32m+[0m [0m[1m[0menable_deletion_protection[0m[0m = false
+      [32m+[0m [0m[1m[0menable_http2[0m[0m               = true
+      [32m+[0m [0m[1m[0menable_waf_fail_open[0m[0m       = false
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout[0m[0m               = 60
+      [32m+[0m [0m[1m[0minternal[0m[0m                   = false
+      [32m+[0m [0m[1m[0mip_address_type[0m[0m            = "ipv4"
+      [32m+[0m [0m[1m[0mload_balancer_type[0m[0m         = "application"
+      [32m+[0m [0m[1m[0mname[0m[0m                       = "Phonebook-App-ALB"
+      [32m+[0m [0m[1m[0mpreserve_host_header[0m[0m       = false
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msubnets[0m[0m                    = [
+          [32m+[0m [0m"subnet-01efa985ae39438f9",
+          [32m+[0m [0m"subnet-05977f8199cc8c0a0",
+          [32m+[0m [0m"subnet-05a8ae1c0e080273d",
+          [32m+[0m [0m"subnet-068e1c6a95bcf03c6",
+          [32m+[0m [0m"subnet-0b81cb4f59c5370c6",
+          [32m+[0m [0m"subnet-0d565b995673260f3",
+        ]
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mzone_id[0m[0m                    = (known after apply)
+
+      [32m+[0m [0msubnet_mapping {
+          [32m+[0m [0m[1m[0mallocation_id[0m[0m        = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_address[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0moutpost_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ipv4_address[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m            = (known after apply)
+        }
+    }
+
+[1m  # aws_lb_listener.Phonebook_Listener_for_ALB[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_listener" "Phonebook_Listener_for_ALB" {
+      [32m+[0m [0m[1m[0marn[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m              = 80
+      [32m+[0m [0m[1m[0mprotocol[0m[0m          = "HTTP"
+      [32m+[0m [0m[1m[0mssl_policy[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m          = (known after apply)
+
+      [32m+[0m [0mdefault_action {
+          [32m+[0m [0m[1m[0morder[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m             = "forward"
+        }
+    }
+
+[1m  # aws_lb_target_group.Phonebook_TG[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_target_group" "Phonebook_TG" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mconnection_termination[0m[0m             = false
+      [32m+[0m [0m[1m[0mderegistration_delay[0m[0m               = "300"
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0mip_address_type[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mlambda_multi_value_headers_enabled[0m[0m = false
+      [32m+[0m [0m[1m[0mload_balancing_algorithm_type[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "Phonebook-App-TG"
+      [32m+[0m [0m[1m[0mport[0m[0m                               = 80
+      [32m+[0m [0m[1m[0mpreserve_client_ip[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                           = "HTTP"
+      [32m+[0m [0m[1m[0mprotocol_version[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mproxy_protocol_v2[0m[0m                  = false
+      [32m+[0m [0m[1m[0mslow_start[0m[0m                         = 0
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mtarget_type[0m[0m                        = "instance"
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                             = "vpc-07b11494e6bee5c56"
+
+      [32m+[0m [0mhealth_check {
+          [32m+[0m [0m[1m[0menabled[0m[0m             = true
+          [32m+[0m [0m[1m[0mhealthy_threshold[0m[0m   = 2
+          [32m+[0m [0m[1m[0minterval[0m[0m            = 30
+          [32m+[0m [0m[1m[0mmatcher[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mpath[0m[0m                = (known after apply)
+          [32m+[0m [0m[1m[0mport[0m[0m                = "traffic-port"
+          [32m+[0m [0m[1m[0mprotocol[0m[0m            = "HTTP"
+          [32m+[0m [0m[1m[0mtimeout[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0munhealthy_threshold[0m[0m = 3
+        }
+
+      [32m+[0m [0mstickiness {
+          [32m+[0m [0m[1m[0mcookie_duration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mcookie_name[0m[0m     = (known after apply)
+          [32m+[0m [0m[1m[0menabled[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m            = (known after apply)
+        }
+
+      [32m+[0m [0mtarget_failover {
+          [32m+[0m [0m[1m[0mon_deregistration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mon_unhealthy[0m[0m      = (known after apply)
+        }
+    }
+
+[1m  # aws_security_group.Sec_grp_ALB[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "Sec_grp_ALB" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "Allow http traffic from anywhere"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = "HTTP from anywhere"
+              [32m+[0m [0mfrom_port        = 80
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 80
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "Sec_grp_for_ALB"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "Sec_grp_for_ALB"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Name" = "Sec_grp_for_ALB"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-07b11494e6bee5c56"
+    }
+
+[1m  # aws_security_group.Sec_grp_DB[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "Sec_grp_DB" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "Allow 3306 traffic from instances"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = []
+              [32m+[0m [0mdescription      = "3306 from instances"
+              [32m+[0m [0mfrom_port        = 3306
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = (known after apply)
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 3306
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "Sec_grp_for_DB"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "Sec_grp_for_DB"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Name" = "Sec_grp_for_DB"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-07b11494e6bee5c56"
+    }
+
+[1m  # aws_security_group.Sec_grp_LT[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "Sec_grp_LT" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "Allow http traffic from Sec_grp_for_ALB"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = "SSH from everywhere"
+              [32m+[0m [0mfrom_port        = 22
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 22
+            },
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = []
+              [32m+[0m [0mdescription      = "HTTP from Sec_grp_for_ALB"
+              [32m+[0m [0mfrom_port        = 80
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = (known after apply)
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 80
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "Sec_grp_for_LT"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "Sec_grp_for_LT"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Name" = "Sec_grp_for_LT"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-07b11494e6bee5c56"
+    }
+
+[0m[1mPlan:[0m 9 to add, 0 to change, 0 to destroy.
+[0m[0m
+[1mChanges to Outputs:[0m[0m
+  [32m+[0m [0m[1m[0mwebsiteurl[0m[0m = (known after apply)
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
