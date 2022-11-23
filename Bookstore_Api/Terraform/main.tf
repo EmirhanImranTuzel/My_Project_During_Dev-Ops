@@ -29,10 +29,10 @@ resource "aws_instance" "docker-server" {
               cd /home/ec2-user
               TOKEN="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"
               FOLDER="https://$TOKEN@raw.githubusercontent.com/EmirhanImranTuzel/My_Project_During_Dev-Ops/main/Bookstore_Api"
-              curl -s --create-dirs -O -L "$FOLDER"/bookstore-api.py
-              curl -s --create-dirs -O -L "$FOLDER"/Dockerfile
-              curl -s --create-dirs -O -L "$FOLDER"/docker-compose.yml
-              curl -s --create-dirs -O -L "$FOLDER"/requirements.txt
+              curl -s --create-dirs -o bookstore-api.py -L "$FOLDER"/bookstore-api.py
+              curl -s --create-dirs -o Dockerfile -L "$FOLDER"/Dockerfile
+              curl -s --create-dirs -o docker-compose.yml -L "$FOLDER"/docker-compose.yml
+              curl -s --create-dirs -o requirements.txt -L "$FOLDER"/requirements.txt
               # docker build -t bookstore-api:latest .
               docker-compose up
               EOF
