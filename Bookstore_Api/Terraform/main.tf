@@ -27,7 +27,7 @@ resource "aws_instance" "docker-server" {
               chmod +x /usr/local/bin/docker-compose
               hostnamectl set-hostname "docker-compose-server"
               cd /home/ec2-user
-              TOKEN="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"
+              TOKEN="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"
               FOLDER="https://$TOKEN@raw.githubusercontent.com/EmirhanImranTuzel/My_Project_During_Dev-Ops/main/Bookstore_Api"
               curl -s -O -L "$FOLDER"/bookstore-api.py
               curl -s -O -L "$FOLDER"/Dockerfile
