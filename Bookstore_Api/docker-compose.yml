@@ -11,6 +11,7 @@ services:
         networks:
             - bookstore-api
     myapp:
+        # image: bookstore-api:latest
         build: .
         restart: always
         depends_on:

@@ -1,5 +1,6 @@
-
-
+# variable "files" {
+#     default = ["bookstore-api.py", "Dockerfile", "docker-compose.yml", "requirements.txt"] 
+# }
 variable "instance_type" {
   type    = string
   default = "t2.micro"
