@@ -26,6 +26,7 @@ resource "aws_instance" "docker-server" {
               sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
               chmod +x /usr/local/bin/docker-compose
               hostnamectl set-hostname "docker-compose-server"
+              cd /home/ec2-user
               TOKEN="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"
               FOLDER="https://$TOKEN@raw.githubusercontent.com/EmirhanImranTuzel/My_Project_During_Dev-Ops/main/Bookstore_Api"
               curl -s --create-dirs -O -L "$FOLDER"/bookstore-api.py
