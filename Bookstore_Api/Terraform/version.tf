@@ -16,7 +16,7 @@ provider "aws" {
 }
 
 # provider "github" {
-#     token = "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"
+#     token = "---------------------------"
 # }
 
 # resource "github_repository" "myrepo" {
