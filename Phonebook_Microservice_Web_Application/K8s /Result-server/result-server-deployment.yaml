@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: result-server
+  template:
+    metadata:
+      labels:
+        app: result-server
+    spec:
+      containers:
+        - name:  result-server
+          image: emrhntzl/phonebook-app-result:1.0
+          ports:
+            - containerPort: 80
+          envFrom:
+          - secretRef:
+              name: mysql-secret
+          - configMapRef:
+              name: servers-configmap
