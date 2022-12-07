@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: Mysql-server
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: Mysql-server 
@@ -24,7 +24,7 @@ spec:
              name: mysql-configmap
         volumeMounts:
           - name: Mysql-storage
-            mountPath: /data/db
+            mountPath: /var/lib/mysql
       volumes:
         - name: Mysql-storage
           persistentVolumeClaim:
